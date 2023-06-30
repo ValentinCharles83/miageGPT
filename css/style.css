@@ -1,0 +1,243 @@
+* {
+    color: white;
+    font-family: 'Creepster', cursive;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #343541;
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+h1 {
+    font-size: 33px;
+    font-weight: 600;
+}
+
+.side-bar {
+    background-color: #202123;
+    width: 244px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0; /* Empêche la réduction de la largeur de la barre latérale */
+    width: 260px; /* Ajuste la largeur de la barre latérale */
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: 100vh; /* Set maximum height equal to the viewport height */
+    overflow: auto; /* Add scrollbars if the content overflows */
+    width: 100%;
+    padding-bottom: 500px; /* Espace supplémentaire en bas pour éviter que le contenu soit masqué par le bas fixe */
+}
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50;
+    width: 100%;
+    padding-top: 20px; /* Espacement supplémentaire au-dessus de la bordure */
+}
+
+.info {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    padding: 10px;
+}
+
+input {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    font-size: 20px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 54px 55px,
+        rgba(0, 0, 0, 0.05) 0 -12px 30px,
+        rgba(0, 0, 0, 0.05) 0 4px 6px,
+        rgba(0, 0, 0, 0.05) 0 12px 3px,
+        rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+}
+
+.input-container #submit {
+    position: absolute;
+    right: 20;
+    bottom: 15px;
+    cursor: pointer;
+}
+
+.new-chat-button {
+    border: solid 0.5px rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor :pointer;
+}
+
+nav {
+    border: solid 0.5px rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.history {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1; /* Permet à la section "history" de prendre tout l'espace disponible */
+    overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+}
+
+
+.history p {
+    cursor: pointer;
+}
+
+.image-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
+    margin-bottom: 20px;
+    flex: 0 0 25%; /* Définition de la largeur pour 4 images par ligne (25% pour 4, 33.33% pour 3, etc.) */
+}
+
+.special-inputs select {
+    border: none;
+    background-color: gray; /* Set a light gray background color */
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 54px 55px,
+        rgba(0, 0, 0, 0.05) 0 -12px 30px,
+        rgba(0, 0, 0, 0.05) 0 4px 6px,
+        rgba(0, 0, 0, 0.05) 0 12px 3px,
+        rgba(0, 0, 0, 0.09) 0 -3px 5px;
+    color: white; /* Set the text color to black */
+
+}
+
+.special-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.output {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 20px;
+    word-wrap: break-word; /* Add automatic line breaks */
+    width: 75%;
+    margin-bottom: 30px;
+}
+
+.history-item {
+    display: block;
+    text-align: left;
+    width: 100%;
+    border: none;
+    background-color: #202123;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .spinner > div {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  }
+  
+  .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+  }
+  
+  .spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+  
+  .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+  
+  .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+  }
+  
+  @-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+    20% { -webkit-transform: scaleY(1.0) }
+  }
+  
+  @keyframes sk-stretchdelay {
+    0%, 40%, 100% { 
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }  20% { 
+      transform: scaleY(1.0);
+      -webkit-transform: scaleY(1.0);
+    }
+  }
+
+  #loadingBar {
+    width: 100%;
+    height: 4px;
+    background: #f3f3f3;
+    border-radius: 2px;
+}
+
+.bar {
+    height: 100%;
+    background: #6699cc;
+    width: 0%;
+    transition: width 0.2s ease-in-out;
+}
+

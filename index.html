@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>MiageGPT with Dall-E</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <!--
+        <script src="js/testRequestDavinCi.js"></script>
+        -->
+    <script type="module" src="js/testRequestGPT3-5.js"></script>
+
+</head>
+
+<body>
+    <section class="side-bar">
+        <button class="new-chat-button">New chat</button>
+        <div class="history"></div>
+        <nav>
+            <p>Made by Michel B, edited by Adem B & Valentin C.</p>
+        </nav>
+    </section>
+    <section class="main">
+        <h1>MiageGPT</h1>
+        <div id="output"></div>
+        <div class="bottom-section">
+            <div class="input-container">
+                <input id="myInput">
+                <div class="special-inputs">
+                    <select id="image-size">
+                        <option value="256x256">256x256</option>
+                        <option value="512x512">512x512</option>
+                        <option value="1024x1024">1024x1024</option>
+                    </select>
+                    <select id="image-count">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <select id="myDropdown" onchange="changeInputText()">
+                        <option value="">chatGPT turbo</option>
+                        <option value="/image ">dallE</option>
+                        <option value="/stable-diffusion ">Stable Diffusion</option>
+                        <option value="/speech ">Speech</option>
+                    </select>
+                </div>
+                <div id="submit">➢</div>
+                <div id="loadingIcon" style="display: none;">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+        <p class="info">Miage GPT Apr 27 version, un essai pour un TP avec les M1 Miage...</p>
+    </section>
+    </div>
+    <script>
+        function changeInputText() {
+            var dropdown = document.getElementById('myDropdown');
+            var current_value = dropdown.options[dropdown.selectedIndex].value;
+            document.getElementById('myInput').value = current_value;
+        }
+    </script>
+    <script type="module" src="js/testRequestGPT3-5.js"></script>
+</body>
+</html>
