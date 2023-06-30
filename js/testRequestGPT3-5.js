@@ -31,6 +31,14 @@ function clearInput() {
     inputElement.value = '';
 }
 
+function showLoading() {
+    document.getElementById('image-loading').style.display = 'block';
+}
+
+function hideLoading() {
+    document.getElementById('image-loading').style.display = 'none';
+}
+
 function updateHistory(prompt, response) {
     const historyItem = document.createElement('button');
     historyItem.textContent = prompt.slice(0, 15) + '...'; // Utilisez les premiers caractères du prompt comme titre du bouton
@@ -84,10 +92,12 @@ async function getMessage() {
     }
 
     else if (prompt.startsWith('/image ')) {
-        const size = imageSizeElement.value; // récupére la valeur de la taille d'image
-        const count = parseInt(imageCountElement.value); // récupére la valeur du compte d'image et la convertir en entier
+        const size = imageSizeElement.value; 
+        const count = parseInt(imageCountElement.value); 
 
-        const images = await getImageFromDallE(prompt, size, count); // passe la taille et le compte à getImageFromDallE
+        showLoading();  // Affiche la barre de chargement
+        const images = await getImageFromDallE(prompt, size, count); 
+        hideLoading();  // Cache la barre de chargement après la fin de la requête
         console.log(images);
 
         images.data.forEach(imageObj => {
@@ -102,10 +112,12 @@ async function getMessage() {
             outputElement.append(imageContainer);
         });
     } else if (prompt.startsWith('/stable-diffusion ')) {
-        const size = imageSizeElement.value; // récupére la valeur de la taille d'image
-        const count = parseInt(imageCountElement.value); // récupére la valeur du compte d'image et la convertir en entier
+        const size = imageSizeElement.value; 
+        const count = parseInt(imageCountElement.value);
 
-        const images = await getImageFromStableDiffusion(prompt, size, count); // passe la taille et le compte à getImageFromStableDiffusion
+        showLoading();  // Affiche la barre de chargement
+        const images = await getImageFromStableDiffusion(prompt, size, count); 
+        hideLoading();  // Cache la barre de chargement après la fin de la requête
         console.log(images);
 
         images.forEach(imageObj => {
@@ -138,7 +150,7 @@ async function getResponseFromGPT(prompt) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${API_KEY}`
+            'Authorization': 'Bearer '+ API_KEY
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
@@ -155,6 +167,7 @@ async function getResponseFromGPT(prompt) {
         const chatGptReponseTxt = data.choices[0].message.content;
         return chatGptReponseTxt;
     } catch (error) {
+
         console.log(error);
     }
 }
